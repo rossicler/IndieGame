@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour {
 
+    float animTimer = .15f;
     float timer = .15f;
+    float specialTimer = 1f;
+    public bool special;
+    public GameObject swordParticle;
 
 	// Use this for initialization
 	void Start () {
@@ -13,11 +17,34 @@ public class Sword : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        timer -= Time.deltaTime;
-        if(timer <= 0)
+        animTimer -= Time.deltaTime;
+        if(animTimer <= 0)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canMove = true;
-            Destroy(gameObject);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetInteger("attackDir", 5);
+        }
+        if (!special)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canMove = true;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canAttack = true;
+                Destroy(gameObject);
+            }
+        } else
+        {
+            specialTimer -= Time.deltaTime;
+            if(specialTimer <= 0)
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canAttack = true;
+                CreateParticle();
+                Destroy(gameObject);
+            }
         }
 	}
+
+    public void CreateParticle()
+    {
+        Instantiate(swordParticle, transform.position, transform.rotation);
+    }
 }

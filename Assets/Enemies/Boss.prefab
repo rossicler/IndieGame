@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 61653127913210226}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardPosition: {fileID: 0}
   potion: {fileID: 0}
+  portalPosition: {fileID: 0}
+  portal: {fileID: 0}
   speed: 2
   dir: 1
   health: 5

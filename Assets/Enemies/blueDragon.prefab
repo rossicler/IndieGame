@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 95995864320528180}
   m_Layer: 0
   m_Name: blueDragon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,12 +118,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b5e92b382e6da45a077ce438e79f83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  health: 4
+  speed: 2
+  health: 3
   deathParticle: {fileID: 1550852801495640, guid: 10bf36943ba940742890a038c6f665e0,
     type: 2}
   projectile: {fileID: 1280177881808256, guid: 4b98a3890da0f3c4c95134af53bfec56, type: 2}
-  thrustPower: 500
+  thrustPower: 250
 --- !u!212 &212864393177983402
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -108,6 +108,15 @@ public class Dragon : MonoBehaviour {
             Destroy(col.gameObject);
             checkHealth();
         }
+        if (col.gameObject.tag == "SkillDarkness")
+        {
+            health -= 2;
+            col.gameObject.GetComponent<SkillDarkness>().CreateParticle();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canAttack = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canMove = true;
+            Destroy(col.gameObject);
+            checkHealth();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

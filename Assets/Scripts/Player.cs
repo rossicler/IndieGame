@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class Player : MonoBehaviour {
 
@@ -12,7 +13,10 @@ public class Player : MonoBehaviour {
     public int maxHealth;
     public int currentHealth;
     public GameObject sword;
+    GameObject skill;
     public float thrustPower;
+    float thrustPowerDarkness;
+    int skillCharges;
     public bool canMove;
     public bool canAttack;
     public bool iniFrames;
@@ -28,6 +32,7 @@ public class Player : MonoBehaviour {
         {
             maxHealth = 2;
             currentHealth = maxHealth;
+            skillCharges = 0;
         } else if (PlayerPrefs.HasKey("maxHealth") && PlayerPrefs.HasKey("currentHealth"))
         {
             LoadGame();
@@ -61,6 +66,10 @@ public class Player : MonoBehaviour {
         {
             Attack();
         }
+        if(Input.GetKeyDown(KeyCode.S) && skillCharges > 0)
+        {
+            Skill();
+        }
         if(currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
@@ -80,6 +89,45 @@ public class Player : MonoBehaviour {
         }
         getHealth();
 	}
+
+    void Skill()
+    {
+        if (!canAttack)
+        {
+            return;
+        }
+        skillCharges--;
+        canMove = true;
+        canAttack = false;
+        thrustPowerDarkness = 650;
+        skill = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/SkillDarkness.prefab", typeof(GameObject));
+        GameObject newDarkness = Instantiate(skill, transform.position, skill.transform.rotation);
+
+        #region SkillRotation
+        int skillDir = anim.GetInteger("dir");
+        anim.SetInteger("attackDir", skillDir);
+        if (skillDir == 0)
+        {
+            newDarkness.transform.Rotate(0, 0, 0);
+            newDarkness.GetComponent<Rigidbody2D>().AddForce(Vector2.up * thrustPower);
+        }
+        else if (skillDir == 1)
+        {
+            newDarkness.transform.Rotate(0, 0, 180);
+            newDarkness.GetComponent<Rigidbody2D>().AddForce(Vector2.up * -thrustPower);
+        }
+        else if (skillDir == 2)
+        {
+            newDarkness.transform.Rotate(0, 0, 90);
+            newDarkness.GetComponent<Rigidbody2D>().AddForce(Vector2.right * -thrustPower);
+        }
+        else if (skillDir == 3)
+        {
+            newDarkness.transform.Rotate(0, 0, -90);
+            newDarkness.GetComponent<Rigidbody2D>().AddForce(Vector2.right * thrustPower);
+        }
+        #endregion
+    }
 
     void Attack()
     {
@@ -175,17 +223,49 @@ public class Player : MonoBehaviour {
             collision.gameObject.GetComponent<Bullet>().CreateParticle();
             Destroy(collision.gameObject);
         }
-        if(collision.tag == "Potion")
+        if(collision.tag == "PotionSmallHP")
         {
-            if(currentHealth >= 5)
+            if(currentHealth >= 4)
             {
                 return;
             }
-            if(maxHealth < 5)
+            if(maxHealth < 4)
+            {
+                maxHealth++;
+            }
+            currentHealth++;
+            Destroy(collision.gameObject);
+        }
+        if (collision.tag == "PotionMediumHP")
+        {
+            if (currentHealth >= 4)
+            {
+                return;
+            }
+            if (maxHealth < 4)
             {
                 maxHealth++;
             }
             currentHealth = maxHealth;
+            Destroy(collision.gameObject);
+        }
+        if (collision.tag == "PotionFullHP")
+        {
+            if (currentHealth >= 5)
+            {
+                return;
+            }
+            if (maxHealth < 5)
+            {
+                maxHealth++;
+            }
+            currentHealth = maxHealth;
+            Destroy(collision.gameObject);
+        }
+        if (collision.tag == "BookSkillDarkness")
+        {
+            //Logic to create the skill with full charges
+            skillCharges = 10;
             Destroy(collision.gameObject);
         }
     }
@@ -207,12 +287,19 @@ public class Player : MonoBehaviour {
     {
         PlayerPrefs.SetInt("maxHealth", maxHealth);
         PlayerPrefs.SetInt("currentHealth", currentHealth);
+        PlayerPrefs.SetInt("skillCharges", skillCharges);
     }
 
     void LoadGame()
     {
         maxHealth = PlayerPrefs.GetInt("maxHealth");
         currentHealth = PlayerPrefs.GetInt("currentHealth");
+        print("teste");
+        if (PlayerPrefs.HasKey("skillCharges"))
+        {
+            print(PlayerPrefs.GetInt("skillCharges"));
+            skillCharges = PlayerPrefs.GetInt("skillCharges");
+        }
     }
 
 }

@@ -138,8 +138,16 @@ public class Wizard : MonoBehaviour
         if (col.gameObject.tag == "Sword")
         {
             health--;
-            print(health);
             col.gameObject.GetComponent<Sword>().CreateParticle();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canAttack = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canMove = true;
+            Destroy(col.gameObject);
+            checkHealth();
+        }
+        if (col.gameObject.tag == "SkillDarkness")
+        {
+            health -= 2;
+            col.gameObject.GetComponent<SkillDarkness>().CreateParticle();
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canAttack = true;
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canMove = true;
             Destroy(col.gameObject);

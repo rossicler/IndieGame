@@ -5,11 +5,11 @@ using UnityEngine;
 public class CheckEnemiesDead : MonoBehaviour {
 
     List<GameObject> listOfEnemies = new List<GameObject>();
-    public Transform portalPosition;
-    public GameObject portal;
+    public GameObject[] items;
+    public Transform[] itemsPositions;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         listOfEnemies.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));	
 	}
 	
@@ -26,7 +26,10 @@ public class CheckEnemiesDead : MonoBehaviour {
         if(listOfEnemies.Count <= 0)
         {
             // all are dead
-            Instantiate(portal, portalPosition.position, portalPosition.rotation);
+            for (int i = 0; i < items.Length; i++)
+            {
+                Instantiate(items[i], itemsPositions[i].position, itemsPositions[i].rotation);
+            }
         }
     }
 	

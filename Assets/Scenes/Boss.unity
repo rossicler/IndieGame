@@ -884,6 +884,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1353731374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1353731375}
+  m_Layer: 0
+  m_Name: portalPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1353731375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1353731374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -2.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1355613025
 Prefab:
   m_ObjectHideFlags: 0
@@ -933,6 +961,17 @@ Prefab:
       propertyPath: potion
       value: 
       objectReference: {fileID: 1658465310689476, guid: 973ca31b6b335054a9a01f24fce3ab90,
+        type: 2}
+    - target: {fileID: 114454313213380722, guid: d066aedf42114134fb400d56161322d0,
+        type: 2}
+      propertyPath: portalPosition
+      value: 
+      objectReference: {fileID: 1353731375}
+    - target: {fileID: 114454313213380722, guid: d066aedf42114134fb400d56161322d0,
+        type: 2}
+      propertyPath: portal
+      value: 
+      objectReference: {fileID: 1267793208873456, guid: febee2f5f81d748488ff7be19df77de1,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d066aedf42114134fb400d56161322d0, type: 2}

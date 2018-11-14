@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/InitialScene.unity
+    guid: c647898589f95114c8161df088d2b8fc
+  - enabled: 1
+    path: Assets/Scenes/RedDungeon.unity
+    guid: 192e7405493d6aa4e99fee7c9143b8f5
+  - enabled: 1
+    path: Assets/Scenes/Boss.unity
+    guid: 009410e4c6b04bd40abe33c14a8b9310
   m_configObjects: {}

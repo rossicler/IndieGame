@@ -173,6 +173,48 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.27, y: 0.74}
   m_EdgeRadius: 0
+--- !u!1001 &105804707
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4838010487729326, guid: 973ca31b6b335054a9a01f24fce3ab90, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 4.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 4838010487729326, guid: 973ca31b6b335054a9a01f24fce3ab90, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4838010487729326, guid: 973ca31b6b335054a9a01f24fce3ab90, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4838010487729326, guid: 973ca31b6b335054a9a01f24fce3ab90, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4838010487729326, guid: 973ca31b6b335054a9a01f24fce3ab90, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4838010487729326, guid: 973ca31b6b335054a9a01f24fce3ab90, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4838010487729326, guid: 973ca31b6b335054a9a01f24fce3ab90, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4838010487729326, guid: 973ca31b6b335054a9a01f24fce3ab90, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 973ca31b6b335054a9a01f24fce3ab90, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!114 &212248406 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114894342169700296, guid: db1f32af560f0144386b72ba04667afd,
@@ -373,7 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portalPosition: {fileID: 1300367283}
-  portal: {fileID: 1267793208873456, guid: febee2f5f81d748488ff7be19df77de1, type: 2}
+  portal: {fileID: 1814898400381864, guid: 3dde7572d335626449f2641780176634, type: 2}
 --- !u!1001 &292850216
 Prefab:
   m_ObjectHideFlags: 0

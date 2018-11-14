@@ -154,16 +154,17 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void checkHealth()
     {
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
-            maxHealth = 2;
-            currentHealth = maxHealth;
-            PlayerPrefs.SetInt("maxHealth", maxHealth);
-            PlayerPrefs.SetInt("currentHealth", currentHealth);
             SceneManager.LoadScene(0);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        checkHealth();
         if(collision.tag == "EnemyBullet")
         {
             if (!iniFrames)
@@ -186,6 +187,19 @@ public class Player : MonoBehaviour {
             }
             currentHealth = maxHealth;
             Destroy(collision.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            checkHealth();
+            if (!iniFrames)
+            {
+                currentHealth--;
+                iniFrames = true;
+            }
         }
     }
 

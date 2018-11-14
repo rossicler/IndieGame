@@ -196,6 +196,8 @@ public class Wizard : MonoBehaviour
     {
         if (health <= 0)
         {
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CheckEnemiesDead>().KilledEnemy(gameObject);
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CheckEnemiesDead>().AreEnemiesDead();
             Instantiate(deathParticle, transform.position, transform.rotation);
             Instantiate(potion, rewardPosition.position, potion.transform.rotation);
             Destroy(gameObject);

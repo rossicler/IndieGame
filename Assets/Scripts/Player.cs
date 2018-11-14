@@ -19,10 +19,16 @@ public class Player : MonoBehaviour {
     SpriteRenderer sr;
     float iniTimer = 1f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         anim = GetComponent<Animator>();
-        if (PlayerPrefs.HasKey("maxHealth") && PlayerPrefs.HasKey("currentHealth"))
+        Scene scene = SceneManager.GetActiveScene();
+
+        if (scene.name == "InitialScene")
+        {
+            maxHealth = 2;
+            currentHealth = maxHealth;
+        } else if (PlayerPrefs.HasKey("maxHealth") && PlayerPrefs.HasKey("currentHealth"))
         {
             LoadGame();
         } else
@@ -152,6 +158,10 @@ public class Player : MonoBehaviour {
     {
         if(currentHealth <= 0)
         {
+            maxHealth = 2;
+            currentHealth = maxHealth;
+            PlayerPrefs.SetInt("maxHealth", maxHealth);
+            PlayerPrefs.SetInt("currentHealth", currentHealth);
             SceneManager.LoadScene(0);
         }
         if(collision.tag == "EnemyBullet")

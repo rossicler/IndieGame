@@ -104,6 +104,8 @@ public class Crab : MonoBehaviour {
     {
         if (health <= 0)
         {
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CheckEnemiesDead>().KilledEnemy(gameObject);
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CheckEnemiesDead>().AreEnemiesDead();
             Instantiate(particleEffect, transform.position, transform.rotation);
             Destroy(gameObject);
         }

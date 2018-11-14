@@ -137,6 +137,8 @@ public class Dragon : MonoBehaviour {
     {
         if(health <= 0)
         {
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CheckEnemiesDead>().KilledEnemy(gameObject);
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CheckEnemiesDead>().AreEnemiesDead();
             Instantiate(deathParticle, transform.position, transform.rotation);
             Destroy(gameObject);
         }

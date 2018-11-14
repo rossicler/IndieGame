@@ -960,7 +960,7 @@ Prefab:
         type: 2}
       propertyPath: potion
       value: 
-      objectReference: {fileID: 1658465310689476, guid: 973ca31b6b335054a9a01f24fce3ab90,
+      objectReference: {fileID: 1102989213035944, guid: ac3be9f000dfd84418c89df3a16b0cea,
         type: 2}
     - target: {fileID: 114454313213380722, guid: d066aedf42114134fb400d56161322d0,
         type: 2}
@@ -1065,8 +1065,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7855c8254c9021740863180acac038ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portalPosition: {fileID: 1353731375}
-  portal: {fileID: 1267793208873456, guid: febee2f5f81d748488ff7be19df77de1, type: 2}
+  items:
+  - {fileID: 1267793208873456, guid: febee2f5f81d748488ff7be19df77de1, type: 2}
+  - {fileID: 1102989213035944, guid: ac3be9f000dfd84418c89df3a16b0cea, type: 2}
+  itemsPositions:
+  - {fileID: 1353731375}
+  - {fileID: 694684008}
 --- !u!1001 &1502540793
 Prefab:
   m_ObjectHideFlags: 0

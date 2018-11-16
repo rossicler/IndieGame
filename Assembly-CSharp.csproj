@@ -68,9 +68,13 @@
     <Compile Include="Assets\Scripts\Enemies\Projectiles\Bullet.cs" />
     <Compile Include="Assets\Scripts\Enemies\Wizard.cs" />
     <Compile Include="Assets\Scripts\LevelLoader.cs" />
+    <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\ParticleTimer.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\SkillDarkness.cs" />
     <Compile Include="Assets\Scripts\Sword.cs" />
+    <None Include="Assets\ARISAN\100 Alchemy item icons-free\item_name.txt" />
+    <None Include="Assets\FreePixelGear\ReadMe.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/hells/Documents/Course Indie Game/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

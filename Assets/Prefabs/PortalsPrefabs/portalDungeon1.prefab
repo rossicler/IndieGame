@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8615ec810568ad047be37803afef4fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndex: 1
+  sceneName: RedDungeon
 --- !u!212 &212184590857745416
 SpriteRenderer:
   m_ObjectHideFlags: 1

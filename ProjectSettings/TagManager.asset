@@ -7,8 +7,12 @@ TagManager:
   - Sword
   - Wall
   - EnemyBullet
-  - Potion
   - Enemy
+  - PotionSmallHP
+  - PotionFullHP
+  - PotionMediumHP
+  - SkillDarkness
+  - BookSkillDarkness
   layers:
   - Default
   - TransparentFX

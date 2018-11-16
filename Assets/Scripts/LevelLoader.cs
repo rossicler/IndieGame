@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour {
 
-    public int sceneIndex;
+    public string sceneName;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().SaveGame();
-            SceneManager.LoadScene(sceneIndex);
+            SceneManager.LoadScene(sceneName);
         }
     }
 

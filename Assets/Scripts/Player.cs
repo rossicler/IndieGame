@@ -107,8 +107,9 @@ public class Player : MonoBehaviour {
 
     void skillLoad()
     {
-        string path = "Assets/Sprites/" + skillName + ".png";
-        Sprite skillSprite = (Sprite)AssetDatabase.LoadAssetAtPath(path, typeof(Sprite));
+        string path = "Skills/Sprites/" + skillName;
+        // Sprite skillSprite = (Sprite)AssetDatabase.LoadAssetAtPath(path, typeof(Sprite));
+        Sprite skillSprite = Resources.Load<Sprite>(path);
         skillUI(skillSprite);
     }
 
@@ -128,7 +129,8 @@ public class Player : MonoBehaviour {
         canMove = true;
         canAttack = false;
         thrustPowerDarkness = 650;
-        skill = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/SkillDarkness.prefab", typeof(GameObject));
+        // skill = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/SkillDarkness.prefab", typeof(GameObject));
+        skill = Resources.Load<GameObject>("Skills/Prefabs/SkillDarkness");
         GameObject newDarkness = Instantiate(skill, transform.position, skill.transform.rotation);
 
         #region SkillRotation

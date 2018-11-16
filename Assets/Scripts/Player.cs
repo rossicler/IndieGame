@@ -10,6 +10,9 @@ public class Player : MonoBehaviour {
 	public float speed;
     Animator anim;
     public Image[] hearts;
+    public Image skillImg;
+    public Text skillText;
+    private string skillName;
     public int maxHealth;
     public int currentHealth;
     public GameObject sword;
@@ -46,18 +49,6 @@ public class Player : MonoBehaviour {
         iniFrames = false;
         sr = GetComponent<SpriteRenderer>();
 	}
-
-    void getHealth()
-    {
-        for(int i=0; i < hearts.Length; i++)
-        {
-            hearts[i].gameObject.SetActive(false);
-        }
-        for(int i=0; i < currentHealth; i++)
-        {
-            hearts[i].gameObject.SetActive(true);
-        }
-    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -90,6 +81,37 @@ public class Player : MonoBehaviour {
         getHealth();
 	}
 
+    void getHealth()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            hearts[i].gameObject.SetActive(false);
+        }
+        for (int i = 0; i < currentHealth; i++)
+        {
+            hearts[i].gameObject.SetActive(true);
+        }
+    }
+    void skillUI()
+    {
+        skillText.text = "x" + skillCharges.ToString();
+    }
+
+    void skillUI(Sprite skillSpriteTemp)
+    {
+        skillImg.sprite = skillSpriteTemp;
+        skillUI();
+        skillImg.gameObject.SetActive(true);
+        skillText.gameObject.SetActive(true);
+    }
+
+    void skillLoad()
+    {
+        string path = "Assets/Sprites/" + skillName + ".png";
+        Sprite skillSprite = (Sprite)AssetDatabase.LoadAssetAtPath(path, typeof(Sprite));
+        skillUI(skillSprite);
+    }
+
     void Skill()
     {
         if (!canAttack)
@@ -97,6 +119,12 @@ public class Player : MonoBehaviour {
             return;
         }
         skillCharges--;
+        skillUI();
+        if (skillCharges <= 0)
+        {
+            skillImg.gameObject.SetActive(false);
+            skillText.gameObject.SetActive(false);
+        }
         canMove = true;
         canAttack = false;
         thrustPowerDarkness = 650;
@@ -109,22 +137,22 @@ public class Player : MonoBehaviour {
         if (skillDir == 0)
         {
             newDarkness.transform.Rotate(0, 0, 0);
-            newDarkness.GetComponent<Rigidbody2D>().AddForce(Vector2.up * thrustPower);
+            newDarkness.GetComponent<Rigidbody2D>().AddForce(Vector2.up * thrustPowerDarkness);
         }
         else if (skillDir == 1)
         {
             newDarkness.transform.Rotate(0, 0, 180);
-            newDarkness.GetComponent<Rigidbody2D>().AddForce(Vector2.up * -thrustPower);
+            newDarkness.GetComponent<Rigidbody2D>().AddForce(Vector2.up * -thrustPowerDarkness);
         }
         else if (skillDir == 2)
         {
             newDarkness.transform.Rotate(0, 0, 90);
-            newDarkness.GetComponent<Rigidbody2D>().AddForce(Vector2.right * -thrustPower);
+            newDarkness.GetComponent<Rigidbody2D>().AddForce(Vector2.right * -thrustPowerDarkness);
         }
         else if (skillDir == 3)
         {
             newDarkness.transform.Rotate(0, 0, -90);
-            newDarkness.GetComponent<Rigidbody2D>().AddForce(Vector2.right * thrustPower);
+            newDarkness.GetComponent<Rigidbody2D>().AddForce(Vector2.right * thrustPowerDarkness);
         }
         #endregion
     }
@@ -265,7 +293,10 @@ public class Player : MonoBehaviour {
         if (collision.tag == "BookSkillDarkness")
         {
             //Logic to create the skill with full charges
+            skillName = "Darkness";
+            skillLoad();
             skillCharges = 10;
+            skillUI();
             Destroy(collision.gameObject);
         }
     }
@@ -287,18 +318,27 @@ public class Player : MonoBehaviour {
     {
         PlayerPrefs.SetInt("maxHealth", maxHealth);
         PlayerPrefs.SetInt("currentHealth", currentHealth);
-        PlayerPrefs.SetInt("skillCharges", skillCharges);
+        if(skillCharges > 0)
+        {
+            PlayerPrefs.SetInt("skillCharges", skillCharges);
+            PlayerPrefs.SetString("skillName", skillName);
+        } else
+        {
+            PlayerPrefs.SetInt("skillCharges", 0);
+            PlayerPrefs.SetString("skillName", "");
+        }
+        
     }
 
     void LoadGame()
     {
         maxHealth = PlayerPrefs.GetInt("maxHealth");
         currentHealth = PlayerPrefs.GetInt("currentHealth");
-        print("teste");
         if (PlayerPrefs.HasKey("skillCharges"))
         {
-            print(PlayerPrefs.GetInt("skillCharges"));
             skillCharges = PlayerPrefs.GetInt("skillCharges");
+            skillName = PlayerPrefs.GetString("skillName");
+            skillLoad();
         }
     }
 

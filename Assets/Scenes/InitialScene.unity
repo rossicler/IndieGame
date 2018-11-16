@@ -70223,11 +70223,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4302358040045558, guid: 5a0409c597563714b8a28a845cecd5c3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -10.300652
+      value: -10.88
       objectReference: {fileID: 0}
     - target: {fileID: 4302358040045558, guid: 5a0409c597563714b8a28a845cecd5c3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.1800003
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: 4302358040045558, guid: 5a0409c597563714b8a28a845cecd5c3, type: 2}
       propertyPath: m_LocalPosition.z
@@ -80175,7 +80175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 1548195831038996, guid: 34e2a4dc91f29584f93238b3eb819817, type: 2}
+  - {fileID: 1386808925813804, guid: a005608ca6c693a4ab061362cf66d3f4, type: 2}
   - {fileID: 1004874018258684, guid: 72663c05ee77c144d9fe4eb33681ac0f, type: 2}
   itemsPositions:
   - {fileID: 1868109919}

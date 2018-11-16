@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61984775435066058}
   m_Layer: 0
   m_Name: dungeonBrownWall Left
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

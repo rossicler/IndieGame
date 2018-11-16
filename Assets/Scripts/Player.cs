@@ -253,11 +253,11 @@ public class Player : MonoBehaviour {
         }
         if(collision.tag == "PotionSmallHP")
         {
-            if(currentHealth >= 4)
+            if(currentHealth >= 3)
             {
                 return;
             }
-            if(maxHealth < 4)
+            if(maxHealth < 3)
             {
                 maxHealth++;
             }

@@ -6,8 +6,6 @@ public class Wizard : MonoBehaviour
 {
 
     Animator anim;
-    public Transform rewardPosition;
-    public GameObject potion;
     public float speed;
     public int dir;
     float dirTimer = 1.2f;
@@ -199,7 +197,6 @@ public class Wizard : MonoBehaviour
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CheckEnemiesDead>().KilledEnemy(gameObject);
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CheckEnemiesDead>().AreEnemiesDead();
             Instantiate(deathParticle, transform.position, transform.rotation);
-            Instantiate(potion, rewardPosition.position, potion.transform.rotation);
             Destroy(gameObject);
         }
     }
